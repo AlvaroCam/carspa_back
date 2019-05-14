@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="pe.com.tintegro.sigs.mapper.OrigenMapper">
+	<resultMap id = "origenResultMap" type = "pe.com.tintegro.sigs.entidad.general.Item">
+		<result property = "ID" column = "id"/>
+		<result property = "valor" column = "descripcion"/>
+	</resultMap>
+	
+	<select id = "obtenerOrigenes" resultMap = "origenResultMap">
+		SELECT * FROM "Admision".fn_ad_select_origen(#{idOrigen});
+	</select>
+</mapper>	
+	

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.com.tintegro.sigs.mapper.ComboGeneralMapper" >
+	<resultMap  type="pe.com.tintegro.sigs.entidad.ComboGeneral" id="comboGeneralMap">
+			<result property="idGrupoOpcion" column="id_grupo_opcion" />
+			<result property="valorGrupoOpcion" column="valor_grupo_opcion" />
+			<collection property="lsOpcionValorCombo" ofType="pe.com.tintegro.sigs.entidad.OpcionValorCombo" >
+				<result property="idOpcion" column="id_opcion" />
+				<result property="valorOpcion" column="valor_opcion" />
+			</collection>
+	</resultMap>
+	
+	<select id="obtenerComboGeneral" resultMap="comboGeneralMap">
+		select * from "Admision".fn_ad_select_opcion_grupo_opcion(#{idGrupoOpcion})
+	</select>
+	
+	<resultMap  type="pe.com.tintegro.sigs.entidad.ComboGeneral" id="comboTipoDocumentoMap">
+		<result property="idTipoDocumento" column="id" />
+		<result property="descripcionTipoDocumento" column="descripcion" />
+	</resultMap>
+	<select id="obtenerComboTipoDocumentoIdentidad" resultMap="comboTipoDocumentoMap">
+		select * from "Admision".fn_ad_select_tb_tipo_documento_identidad()
+	</select>
+	
+</mapper>
+

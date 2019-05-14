@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.com.tintegro.sigs.mapper.ExamenAreaMapper" >
+	<resultMap type="pe.com.tintegro.sigs.entidad.general.Item" id="examenAreaResultMap">
+		<result property="ID" column="id" />
+		<result property="valor" column="descripcion" />
+	</resultMap>
+	
+	<select id="obtenerExamenAreas" resultMap="examenAreaResultMap">
+		SELECT *  FROM "Admision".fn_ad_select_examen_areas(#{ idExamenArea }, #{ idExamenTipo })
+	</select>
+</mapper>

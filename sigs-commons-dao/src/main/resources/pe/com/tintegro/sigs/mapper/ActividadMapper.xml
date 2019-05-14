@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="pe.com.tintegro.sigs.mapper.ActividadMapper">
+	<resultMap id = "itemResultMap" type = "pe.com.tintegro.sigs.entidad.general.Item">
+		<result property = "ID" column = "id"/>
+		<result property = "valor" column = "descripcion"/>
+	</resultMap>
+	
+	<select id = "obtenerActividades" resultMap = "itemResultMap">
+		<!-- Falta implementar -->
+		SELECT * FROM "Admision".fn_ad_select_actividades(#{idIPRESS}, #{idArea}, #{idEspecialidad}, #{idActividad});
+	</select>
+	
+	<select id = "obtenerActividadesConsultaAmbulatoria" resultMap = "itemResultMap">
+		<!-- Falta implementar -->
+		SELECT * FROM "Admision".fn_ad_select_actividades_cita(#{idIPRESS}, 
+															   #{idArea}, 
+															   #{idEspecialidad}, 
+															   #{idActividad});
+	</select>
+	
+	<select id = "obtenerSubActividades" resultMap = "itemResultMap">
+		<!-- Falta implementar -->
+		SELECT * FROM "Admision".fn_ad_select_sub_actividades(#{idIPRESS}, #{idArea}, #{idEspecialidad}, #{idActividad}, #{idSubActividad});
+	</select>
+	
+		<resultMap id="resultMapSubActividad" type = "pe.com.tintegro.sigs.entidad.SubActividad">
+		<result property="idSubActividad" column="id_sub_actividad"/>
+		<result property="descripcionSubActividad" column="descripcion_sub_actividad"/>
+		<result property="abreviatura" column="abreviatura"/>
+		<result property="nuTotalReg" column="nu_total_reg"/>	
+		<association property="actividad" javaType="pe.com.tintegro.sigs.entidad.Actividad">
+			<result property="descripcionActividad" column="descripcion_actividad" />
+		</association>
+	</resultMap>
+	
+	<resultMap id = "confirmacionResultMapNew" type = "pe.com.tintegro.sigs.entidad.general.Confirmacion">
+		<result property = "id" column = "id_result"/>
+		<result property = "mensaje" column = "mensaje"/>
+	</resultMap>
+	
+		<resultMap type="pe.com.tintegro.sigs.entidad.general.Confirmacion" id="confirmacionResultMap">
+		<result property="id" column="id_result" />
+		<result property="mensaje" column="mensaje" />
+	</resultMap>
+	
+	<resultMap id="obtenerActividadDescripcionResultMap" type="pe.com.tintegro.sigs.entidad.Actividad">
+		<result property="idActividad" column="id_actividad"/>
+		<result property="descripcionActividad" column="descripcion_actividad"/>
+		<result property="abreviatura" column="abreviatura"/>
+		<result property="tipoProgramacion" column="tipo_programacion"/>
+		<result property="tipoActividad" column="tipo_actividad"/>
+		<result property="ambiente" column="fl_ambiente"/>
+		<result property="nuTotalReg" column="nu_total_reg" />
+	</resultMap>
+	
+	<select id = "insertarActividad" resultMap = "confirmacionResultMapNew">
+		SELECT * FROM "Admision".fn_ad_insert_actividad(
+		#{descripcionActividad}, 
+		#{abreviatura}, 
+		#{tipoProgramacion},
+		#{tipoActividad},
+		#{ambiente});
+		
+	</select>
+	
+	<select id="obtenerActividadDescripcion" resultMap="obtenerActividadDescripcionResultMap">
+		SELECT * FROM "Admision".fn_ad_select_actividad_descripcion(
+		#{descripcionActividad}, 
+		#{nuPagina},
+		#{nuRegisMostrar});
+	</select>
+
+	<select id="eliminarActividad" resultMap="confirmacionResultMapNew">
+		SELECT * FROM "Admision".fn_ad_delete_actividad( #{idActividad} );
+	</select>
+	
+	<!-- Funcion Obtener -->
+	<select id="obtenerSubActividad" resultMap="resultMapSubActividad">
+		select * from "Admision".fn_ad_select_subactividad (#{ descripcionSubActividad },#{ numPagina },#{ numRegisMostrar });
+	</select>
+	
+	<!-- Funcion Registrar -->
+	<select id="insertarSubActividad" resultMap="confirmacionResultMap">
+		select * from "Admision".fn_ad_insert_subactividad (#{ descripcionSubActividad },#{abreviatura},#{ idActividad });
+	</select>
+	
+	<!-- Funcion Eliminar -->
+	<select id="eliminarSubActividad" resultMap="confirmacionResultMap">
+			select * from "Admision".fn_ad_delete_subactividad (#{ idSubActividad });
+	</select>
+	
+	<!-- Funcion Editar Actividad -->
+	<select id="editarActividad" resultMap="confirmacionResultMap">
+	select * from "Admision".fn_fr_update_actividad(#{idActividad},#{descripcionActividad},#{abreviatura},#{tipoProgramacion},
+		#{tipoActividad},
+		#{ambiente});
+	
+	</select>	
+</mapper>

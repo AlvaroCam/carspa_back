@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="pe.com.tintegro.sigs.mapper.AreaEspecialidadActividadMapper">
+	<resultMap id="resultMapAreaEspecialidadActividad" type = "pe.com.tintegro.sigs.entidad.AreaEspecialidadActividad">
+		<result property="actMedica" column="flg_actividad_medica"/>
+		<result property="idArea" column="id_area"/>
+		<result property="descripcionArea" column="descripcion_area"/>
+		<result property="idEspecialidad" column="id_especialidad"/>
+		<result property="descripcionEspecialidad" column="descripcion_especialidad"/>
+		<result property="idActividad" column="id_actividad"/>
+		<result property="descripcionActividad" column="descripcion_actividad"/>
+		<result property="pacienteHora" column="paciente_hora"/>
+		<result property="ambiente" column="fl_ambiente"/>
+		<result property="cCitasVoluntarias" column="cupos_cita_volu"/>
+		<result property="cRecitas" column="cupos_cita_recita"/>
+		<result property="cInterconsultas" column="cupos_inter"/>
+		<result property="cCitarReferido" column="cupos_referidos"/>
+		<result property="cCitasDias" column="cupos_dias"/>
+		<result property="tCuposNuevos" column="topo_nuevos"/>
+		<result property="tCuposAdicionales" column="cupos_adicionales"/>
+		<result property="dAdeLiberaCupos" column="dias_adelanto"/>
+		<result property="nuTotalReg" column="nu_total_reg"/>
+		<result property="prioVolu" column = "prio_volu"/>
+		<result property="prioRecita" column = "prio_recita"/>
+		<result property="prioInter" column = "prio_inter"/>
+		<result property="prioReferidos" column = "prio_referidos"/>
+		<result property="prioDias" column = "prio_dias"/>
+		<result property="flgAmb" column = "flg_amb"/>
+		<result property="idFormImpre" column="id_form_impre" />
+		<result property="descripcionFormImpre" column="descripcion_form_impre" />
+		<result property="tipoProgramacion" column="tipo_programacion"/>
+	</resultMap>
+	
+	<resultMap id = "confirmacionResultMap" type = "pe.com.tintegro.sigs.entidad.general.Confirmacion">
+		<result property = "id" column = "id_result"/>
+		<result property = "mensaje" column = "mensaje"/>
+	</resultMap>
+	
+	<select id="obtenerAreaEspecialidadActividad" resultMap="resultMapAreaEspecialidadActividad">
+	SELECT * FROM "Admision".fn_ad_select_area_actividad_especialidad(#{idIPRESS},
+																	  #{idArea}, 
+																	  #{idEspecialidad}, 
+																	  #{idActividad},
+																	  #{nuPagina},
+																	  #{nuRegisMostrar});
+	</select>
+	
+	<select id = "insertarAreaEspecialidadActividad" resultMap = "confirmacionResultMap">
+		SELECT * FROM "Admision".fn_ad_insert_area_actividad_especialidad(#{idIPRESS}, 
+																		  #{idArea}, 
+																		  #{idEspecialidad}, 
+																		  #{idActividad}, 
+																		  #{actMedica},
+																		  #{pacienteHora},
+																		  #{ambiente},
+																		  #{cCitasVoluntarias},
+																		  #{cRecitas},
+																		  #{cInterconsultas},
+																		  #{cCitarReferido},
+																		  #{cCitasDias},
+																		  #{tCuposNuevos},
+																		  #{tCuposAdicionales},
+																		  #{dAdeLiberaCupos},
+																		  #{idFormImpre},
+																		  #{prioVolu},
+																		  #{prioRecita},
+																		  #{prioInter},
+																		  #{prioReferidos},
+																		  #{prioDias},
+																		  #{flgAmb});
+	</select>
+	
+	<select id = "actualizarAreaEspecialidadActividad" resultMap = "confirmacionResultMap">
+		SELECT * FROM "Admision".fn_ad_update_area_actividad_especialidad(#{idIPRESS}, 
+																		  #{idArea}, 
+																		  #{idEspecialidad}, 
+																		  #{idActividad}, 
+																		  #{actMedica},
+																		  #{pacienteHora},
+																		  #{ambiente},
+																		  #{cCitasVoluntarias},
+																		  #{cRecitas},
+																		  #{cInterconsultas},
+																		  #{cCitarReferido},
+																		  #{cCitasDias},
+																		  #{tCuposNuevos},
+																		  #{tCuposAdicionales},
+																		  #{dAdeLiberaCupos},
+																		  #{idFormImpre},
+																		  #{prioVolu},
+																		  #{prioRecita},
+																		  #{prioInter},
+																		  #{prioReferidos},
+																		  #{prioDias},
+																		  #{flgAmb});
+	</select>
+	
+	<select id = "eliminarAreaEspecialidadActividad" resultMap = "confirmacionResultMap">
+		 SELECT * FROM "Admision".fn_ad_delete_area_actividad_especialidad( #{idIPRESS}, 
+																			#{idArea}, 
+																			#{idEspecialidad}, 
+																			#{idActividad});
+	</select>
+	
+</mapper>

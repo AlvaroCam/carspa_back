@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="pe.com.tintegro.sigs.mapper.AreaEspecialidadMapper">
+	<resultMap id="resultMapAreaEspecialidad" type = "pe.com.tintegro.sigs.entidad.AreaEspecialidad">
+		<result property="idserapes" column="id_area_especialidad"/>
+		<result property="rpct" column="rpct"/>
+		<result property="flag_interconsulta" column="flg_interconsulta"/>
+		<result property="edadMaxima" column="edad_max"/>
+		<result property="edadMinima" column="edad_min"/>
+		<result property="nuTotalReg" column="nu_total_reg"/>
+		<association property="area" javaType="pe.com.tintegro.sigs.entidad.general.Item">
+			<result property="ID" column="id_area" />
+			<result property="valor" column="descripcion_area" />
+		</association>
+		<association property="especialidad" javaType="pe.com.tintegro.sigs.entidad.general.Item">
+			<result property="ID" column="id_especialidad" />
+			<result property="valor" column="descripcion_especialidad" />
+		</association>
+		<association property="sexo" javaType="pe.com.tintegro.sigs.entidad.general.Item">
+			<result property="ID" column="id_sexo" />
+			<result property="valor" column="descripcion_sexo" />
+		</association>
+	</resultMap>
+	
+	
+	<resultMap id="resultMapAreaEspecialidadNuevo" type = "pe.com.tintegro.sigs.entidad.AreaEspecialidad">
+		<result property="id_area" column="id_area"/>
+		<result property="descripcion_area" column="descripcion_area"/>
+		<result property="id_especialidad" column="id_especialidad"/>
+		<result property="descripcion_especialidad" column="descripcion_especialidad"/>
+		<result property="rcpt" column="rcpt"/>
+		<result property="flg_interconsulta" column="flg_interconsulta"/>
+		<result property="descripcion_sexo" column="descripcion_sexo"/>
+		<result property="edad_max" column="edad_max"/>
+		<result property="edad_min" column="edad_min"/>
+		<result property="id_sexo" column="id_sexo"/>
+		<result property="nu_total_reg" column="nu_total_reg"/>
+				
+	</resultMap>
+	
+	<resultMap id = "confirmacionResultMap" type = "pe.com.tintegro.sigs.entidad.general.Confirmacion">
+		<result property = "id" column = "id_result"/>
+		<result property = "mensaje" column = "mensaje"/>
+	</resultMap>
+	
+	<select id = "obtenerAreaPorEspecialidad" resultMap = "resultMapAreaEspecialidad">
+		SELECT * FROM "Admision".fn_ad_select_area_especialidad(#{idArea}, 
+		 														#{idEspecialidad}, 
+		 														#{nuPagina}, 
+		 														#{nuRegisMostrar});
+	</select>
+	
+	<select id = "insertarAreaPorEspecialidad" resultMap = "confirmacionResultMap">
+		SELECT * FROM "Admision".fn_ad_insert_area_especialidad(#{idArea},
+																#{idEspecialidad},
+																#{rpct},
+																#{flag_interconsulta},
+																#{idSexo},
+																#{edadMaxima},
+																#{edadMinima});
+	</select>
+	
+	<select id = "actualizarAreaPorEspecialidad" resultMap = "confirmacionResultMap">
+		SELECT * FROM "Admision".fn_ad_update_area_especialidad(#{idArea},
+																#{idEspecialidad},
+																#{rpct},
+																#{flag_interconsulta},
+																#{idSexo},
+																#{edadMaxima},
+																#{edadMinima});
+	</select>
+	
+	<select id = "eliminarAreaPorEspecialidad" resultMap = "confirmacionResultMap">
+		SELECT * FROM "Admision".fn_ad_delete_area_especialidad(#{idArea},
+																#{idEspecialidad});
+	</select>
+	
+</mapper>

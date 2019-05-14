@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="pe.com.tintegro.sigs.mapper.AreaEspecialidadActividadGrupoOcupacionalMapper">
+	<resultMap id="areaEspecialidadActividadGrupoOcupacionalMap"
+		type="pe.com.tintegro.sigs.entidad.general.Item">
+		<result property="ID" column="id" />
+		<result property="valor" column="descripcion" />
+	</resultMap>
+
+	<resultMap type="pe.com.tintegro.sigs.entidad.general.Confirmacion"
+		id="confirmacionResultMap">
+		<result property="id" column="id_result" />
+		<result property="mensaje" column="mensaje" />
+	</resultMap>
+
+	<resultMap
+		type="pe.com.tintegro.sigs.entidad.AreaEspecialidadActividadGrupoOcupacional"
+		id="resultMapAreaEspecialidadActividadGrupoOcupacional">
+		<result property="descripcionEspecialidad" column="descripcion_especialidad" />
+		<result property="idArea" column="id_area" />
+		<result property="descripcionArea" column="descripcion_area" />
+		<result property="idEspecialidad" column="id_especialidad" />
+		<result property="idActividad" column="id_actividad" />
+		<result property="descripcionActividad" column="descripcion_actividad" />
+		<result property="idGrupoOcupacional" column="id_grupo_ocupacional" />
+		<result property="descripcionGrupoOcupacional" column="descripcion_form_impre" />
+		<result property="nuTotalReg" column="nu_total_reg" />
+	</resultMap>
+
+
+	<select id="insertarAreaEspecialidadActividadGrupoOcupacionalJ"
+		resultMap="confirmacionResultMap">
+		select * from
+		"Admision".fn_ad_insert_restriccion_act_grupo_ocupacional(#{idIPRESS},#{idArea},#{idEspecialidad},#{idActividad},#{idGrupoOcupacional});
+	</select>
+
+	<select id="obtenerAreaEspecialidadActividadGrupoOcupacionalJ"
+		resultMap="resultMapAreaEspecialidadActividadGrupoOcupacional">
+		select * from
+		"Admision".fn_ad_select_area_especialidad_actividad_grupo_ocupacional(#{idArea},#{idEspecialidad},#{idActividad},#{idGrupoOcupacional},#{idIPRESS},#{nuPagina},#{nuRegisMostrar});
+	</select>
+
+	<select id="eliminarAreaEspecialidadActividadGrupoOcupacionalJ"
+		resultMap="confirmacionResultMap">
+		select * from
+		"Admision".fn_ad_delete_tb_especialidad(#{idActividad},#{idArea},#{idEspecialidad},#{idIPRESS},#{idGrupoOcupacional});
+	</select>
+</mapper>

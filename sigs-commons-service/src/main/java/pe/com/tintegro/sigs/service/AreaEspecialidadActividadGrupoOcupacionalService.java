@@ -1,0 +1,18 @@
+package pe.com.tintegro.sigs.service;
+
+import pe.com.tintegro.sigs.dto.request.EliminarAreaEspecialidadActividadGrupoOcupacionalJRequest;
+import pe.com.tintegro.sigs.dto.request.InsertarAreaEspecialidadActividadGrupoOcupacionalJRequest;
+import pe.com.tintegro.sigs.dto.request.ObtenerAreaEspecialidadActividadGrupoOcupacionalJRequest;
+import pe.com.tintegro.sigs.dto.response.EliminarAreaEspecialidadActividadGrupoOcupacionalJResponse;
+import pe.com.tintegro.sigs.dto.response.InsertarAreaEspecialidadActividadGrupoOcupacionalJResponse;
+import pe.com.tintegro.sigs.dto.response.ObtenerAreaEspecialidadActividadGrupoOcupacionalJResponse;
+
+public interface AreaEspecialidadActividadGrupoOcupacionalService {
+	
+	public InsertarAreaEspecialidadActividadGrupoOcupacionalJResponse insertarAreaEspecialidadActividadGrupoOcupacionalJ(InsertarAreaEspecialidadActividadGrupoOcupacionalJRequest request) throws Exception;
+	
+	public ObtenerAreaEspecialidadActividadGrupoOcupacionalJResponse obtenerAreaEspecialidadActividadGrupoOcupacionalJ(ObtenerAreaEspecialidadActividadGrupoOcupacionalJRequest request) throws Exception;
+	
+	public EliminarAreaEspecialidadActividadGrupoOcupacionalJResponse eliminarAreaEspecialidadActividadaGrupoOcupacionalJ(EliminarAreaEspecialidadActividadGrupoOcupacionalJRequest request) throws Exception;
+
+}

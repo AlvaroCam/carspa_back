@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.com.tintegro.sigs.mapper.MedicamentoDispositivoMapper">
+	<resultMap type="pe.com.tintegro.sigs.entidad.MedicamentoDispMedicoProdSanitario" id="medicamentoDispMedicoProdSanitarioResultMap">
+		<result property="idMedicamento" column="id_medicamento"/>
+		<result property="dispositivoMedicamento" column="dispositivo_medicamento"/>
+		<result property="marca" column="marca"/>
+		<result property="laboratorio" column="laboratorio"/>
+		<result property="codigo" column="codigo"/>
+		<result property="formaFarmaceutica" column="forma_farmaceutica"/>
+		<result property="concentracion" column="concentracion"/>
+		<result property="nombreComercial" column="nombre_comercial"/>
+		<result property="anaquel" column= "anaquel"/>
+		<result property="fiTipo" column="fi_tipo"/>	
+	</resultMap>
+	
+	<select id="obtenerMedicamentoDispMedicoProdSanitario" resultMap="medicamentoDispMedicoProdSanitarioResultMap">
+		SELECT * FROM "Farmacia".fn_ad_select_medicamento_disp_medico_prod_sanitario( #{ idIPRESS } );
+	</select>
+	
+	<select id="obtenerMedicamentoDispositivoAnaquel" resultMap="medicamentoDispMedicoProdSanitarioResultMap">
+		select * from "Farmacia".fn_fr_select_medicamento_disp_medico_prod_sanitario_anaquel( #{ idAlmacen}, #{ idMedicamento }, #{ anaquel }, #{ fiTipo } );
+	</select>
+</mapper>
