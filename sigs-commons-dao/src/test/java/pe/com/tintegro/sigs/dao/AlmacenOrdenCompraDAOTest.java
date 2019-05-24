@@ -27,13 +27,13 @@ public class AlmacenOrdenCompraDAOTest {
 	private AlmacenOrdenCompraDAO almacenOrdenCompraDAO;
 
 	@Test
-	@Ignore
+	//@Ignore
 	public void obtenerAlmacenOrdenCompra() {
 
 		ListarAlmacenOrdenCompraRequest request = new ListarAlmacenOrdenCompraRequest();
 		ListarAlmacenOrdenCompraResponse response = new ListarAlmacenOrdenCompraResponse();
-		request.setIdAlmacenOrdenCompra(1);
-		request.setEstado("P");
+		request.setIdAlmacenOrdenCompra(null);
+		request.setEstado(null);
 		request.setNuPagina(1);
 		request.setNuRegisMostrar(10);
 

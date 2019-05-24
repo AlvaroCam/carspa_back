@@ -1,10 +1,19 @@
 package pe.com.tintegro.sigs.dto.request;
 
-public class ListarProveedorRequest {
+public class ListarProveedorRequest extends RequestBase {
 
+	private Integer idProveedor;
 	private String nombreProveedor;
 	private Integer nuPagina;
 	private Integer nuRegisMostrar;
+
+	public Integer getIdProveedor() {
+		return idProveedor;
+	}
+
+	public void setIdProveedor(Integer idProveedor) {
+		this.idProveedor = idProveedor;
+	}
 
 	public Integer getNuPagina() {
 		return nuPagina;
@@ -29,5 +38,5 @@ public class ListarProveedorRequest {
 	public void setNombreProveedor(String nombreProveedor) {
 		this.nombreProveedor = nombreProveedor;
 	}
-
+	
 }

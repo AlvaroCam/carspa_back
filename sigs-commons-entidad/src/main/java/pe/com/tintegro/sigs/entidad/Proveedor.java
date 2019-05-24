@@ -1,12 +1,14 @@
 package pe.com.tintegro.sigs.entidad;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class Proveedor {
-
+public class Proveedor implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Integer idProveedor;
 	private String nombreProveedor;
 	private String direccion;
@@ -14,6 +16,8 @@ public class Proveedor {
 	private String telefono;
 	private String contacto;
 	private Integer idTipoPago;
+	private String nombreTipoPago;
+	private Integer nuTotalReg;
 
 	public Integer getIdTipoPago() {
 		return idTipoPago;
@@ -21,6 +25,22 @@ public class Proveedor {
 
 	public void setIdTipoPago(Integer idTipoPago) {
 		this.idTipoPago = idTipoPago;
+	}
+
+	public Integer getNuTotalReg() {
+		return nuTotalReg;
+	}
+
+	public void setNuTotalReg(Integer nuTotalReg) {
+		this.nuTotalReg = nuTotalReg;
+	}
+
+	public String getNombreTipoPago() {
+		return nombreTipoPago;
+	}
+
+	public void setNombreTipoPago(String nombreTipoPago) {
+		this.nombreTipoPago = nombreTipoPago;
 	}
 
 	public Integer getIdProveedor() {
@@ -72,4 +92,3 @@ public class Proveedor {
 	}
 
 }
-

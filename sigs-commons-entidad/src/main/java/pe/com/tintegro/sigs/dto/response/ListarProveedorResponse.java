@@ -2,18 +2,17 @@ package pe.com.tintegro.sigs.dto.response;
 
 import java.util.List;
 
-import pe.com.tintegro.sigs.entidad.Proveedor;
+import pe.com.tintegro.sigs.entidad.Proveedor;;
 
 public class ListarProveedorResponse extends ResponseBase {
 
-	private List<Proveedor> proveedor;
+	private List<Proveedor> proveedorList;
 
-	public List<Proveedor> getProveedor() {
-		return proveedor;
+	public List<Proveedor> getProveedorList() {
+		return proveedorList;
 	}
 
-	public void setProveedor(List<Proveedor> proveedor) {
-		this.proveedor = proveedor;
+	public void setProveedorList(List<Proveedor> proveedorList) {
+		this.proveedorList = proveedorList;
 	}
-
 }
