@@ -11,7 +11,6 @@
 	<resultMap id="listaMaterialesMap" type="pe.com.tintegro.sigs.entidad.Material">
 		<result property="idMaterial" column="id_material" />
 		<result property="stockMaximo" column="stock_maximo" />
-		<result property="precioVenta" column="precio_venta" />
 		<result property="stockMinimo" column="stock_minimo" />
 		<result property="puntoPedido" column="punto_pedido" />
 		<result property="fechaRegistro" column="fecha_registro" />
@@ -25,6 +24,7 @@
 		<result property="descripcion" column="descripcion"/>
 		<result property="idProveedor" column="id_proveedor"/>
 		<result property="nombreProveedor" column="proveedor"/>
+		<result property="alerta" column="alerta"/>
 		<result property="nuTotalReg" column="nu_total_reg"/>
 	</resultMap>
 	
@@ -59,28 +59,29 @@
 		#{stockMaximo},
 		#{stockMinimo},
 		#{puntoPedido},
-		#{precioVenta},
 		#{nombre},
 		#{marca},
 		#{stock},
-		#{precioCompra},
-		#{descripcion},
-		#{idProveedor})
+		#{descripcion})
+
 	</select>
 	<select id="updateMaterial" resultMap="CRUDMap">
 		select * from
 		logistica.fn_lo_update_material(
 		#{idMaterial},
+		#{codigo},
 		#{stockMaximo},
 		#{stockMinimo},
 		#{puntoPedido},
-		#{precioVenta},
 		#{nombre},
 		#{marca},
 		#{stock},
-		#{precioCompra},
-		#{descripcion},
-		#{idProveedor})
+		#{descripcion})
+	</select>
+		<select id="listarMaterialesAlerta" resultMap="listaMaterialesMap">
+		select * from
+		logistica.fn_lo_select_materiales_alerta(#{nombre}, #{estado}, #{nuPagina}, #{nuRegisMostrar})
+
 	</select>
 
 </mapper>

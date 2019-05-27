@@ -20,18 +20,34 @@ public interface MaterialMapper {
 			@Param("nuRegisMostrar")Integer nuRegisMostrar) throws Exception;
 	
 	public List<Proveedor> comboProveedor()throws Exception;
+	
 	public Confirmacion insertMaterial(
 			@Param("codigo")String codigo,
 			@Param("stockMaximo")Integer stockMaximo,
 			@Param("stockMinimo")Integer stockMinimo,
 			@Param("puntoPedido")Integer puntoPedido,
-			@Param("precioVenta")Integer precioVenta,
 			@Param("nombre")String nombre,
 			@Param("marca")String marca,
 			@Param("stock")Integer stock,
-			@Param("precioCompra")Integer precioCompra,
-			@Param("descripcion")String descripcion,
-			@Param("idProveedor")Integer idProveedor) throws Exception;
+			@Param("descripcion")String descripcion) throws Exception;
+	
+	public Confirmacion updateMaterial(
+			@Param("idMaterial")Integer idMaterial,
+			@Param("codigo")String codigo,
+			@Param("stockMaximo")Integer stockMaximo,
+			@Param("stockMinimo")Integer stockMinimo,
+			@Param("puntoPedido")Integer puntoPedido,
+			@Param("nombre")String nombre,
+			@Param("marca")String marca,
+			@Param("stock")Integer stock,
+			@Param("descripcion")String descripcion) throws Exception;
+	
+	public List<Material> listarMaterialesAlerta(
+			@Param("nombre")String nombre,
+			@Param("estado")Integer estado,
+			@Param("nuPagina")Integer nuPagina,
+			@Param("nuRegisMostrar")Integer nuRegisMostrar) throws Exception;
+
 	
 	public Confirmacion updateMaterial(
 			@Param("idMaterial")Integer idMaterial,
@@ -44,5 +60,5 @@ public interface MaterialMapper {
 			@Param("stock")Integer stock,
 			@Param("precioCompra")Integer precioCompra,
 			@Param("descripcion")String descripcion,
-			@Param("idProveedor")Integer idProveedor) throws Exception;
+			@Param("idProveedor")Integer idProveedor) throws Exception; 
 }

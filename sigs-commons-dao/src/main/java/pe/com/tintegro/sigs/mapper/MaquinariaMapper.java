@@ -17,13 +17,16 @@ public interface MaquinariaMapper {
 	public Confirmacion insertMaquinaria(
 			@Param("nombre")String nombre,
 			@Param("marca")String marca,
-			@Param("cantidad")Integer cantidad,
+			@Param("codigo")String codigo,
 			@Param("fechaMantenimiento")String fechaMantenimiento,
 			@Param("detalle")String detalle) throws Exception;
 	
 	public Confirmacion updateMaquinaria(
 			@Param("idMaquinaria")Integer idMaquinaria,
-			@Param("cantidad")Integer cantidad,
+
+			@Param("nombre")String nombre,
+			@Param("marca")String marca,
+			@Param("codigo")String codigo,
 			@Param("fechaMantenimiento")String fechaMantenimiento,
 			@Param("detalle")String detalle) throws Exception;
 	

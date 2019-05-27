@@ -22,4 +22,9 @@ public interface MaterialDAO {
 
 	public ListarProveedorResponse comboProveedor(ListarProveedorRequest request) throws Exception;
 
+
+	public ListarMaterialResponse listarMaterialesAlerta(ListarMaterialRequest request) throws Exception;
+
+
+
 }

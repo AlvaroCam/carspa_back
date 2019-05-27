@@ -177,5 +177,34 @@ public class MaterialController {
 		}
 		return response;
 	}
+	@RequestMapping(value = "/listarMaterialesAlertas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseStatus(value = HttpStatus.OK)
+	@ApiOperation(value = "obtiene materiales", notes = "obtiene materiales", response = ListarMaterialResponse.class)
+	public ListarMaterialResponse listarMaterialesAlerta(
+			String nombre,
+			Integer estado,
+			Integer nuPagina,
+			Integer nuRegisMostrar) {
+		ListarMaterialResponse response = new ListarMaterialResponse();
+		ListarMaterialRequest request = new ListarMaterialRequest();
+		
+		request.setNombre(nombre);
+		request.setEstado(estado);
+		request.setNuPagina(nuPagina);
+		request.setNuRegisMostrar(nuRegisMostrar);
+		
+		try {
+			response = materialService.listarMaterialesAlerta(request);
+			response.setEstado(1);
+		} catch (Exception e) {
+			String codigoError = ResponseHelper
+					.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
+			response.setEstado(ResponseEstado.ERROR_APLICACION);
+			response.setMensaje("Ocurrió un error al obtener");
+			response.setCodigoError(codigoError);
+			LOG.error(codigoError, e);
+		}
+		return response;
+	}
 
 }

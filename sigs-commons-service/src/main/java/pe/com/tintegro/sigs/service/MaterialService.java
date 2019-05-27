@@ -20,4 +20,7 @@ public interface MaterialService {
 	public ListarMaterialResponse listarMateriales(ListarMaterialRequest request) throws Exception;
 
 	public ListarProveedorResponse comboProveedor(ListarProveedorRequest request) throws Exception;
+	
+	public ListarMaterialResponse listarMaterialesAlerta(ListarMaterialRequest request) throws Exception;
+
 }

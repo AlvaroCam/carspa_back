@@ -146,7 +146,8 @@ public class MaquinariaController {
 			String codigoError = ResponseHelper
 					.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
 			response.setEstado(ResponseEstado.ERROR_APLICACION);
-			response.setMensaje("Ocurrió un error al obtener las Ordenes de Compra");
+			response.setMensaje("Ocurrió un error al insertar");
+
 			response.setCodigoError(codigoError);
 			LOG.error(codigoError, e);
 		}

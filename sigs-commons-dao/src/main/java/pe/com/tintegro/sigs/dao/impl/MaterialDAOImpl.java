@@ -49,8 +49,9 @@ public class MaterialDAOImpl implements MaterialDAO{
 	public InsertarActualizarMaterialResponse updateMaterial(InsertarActualizarMaterialRequest request)
 			throws Exception {
 		InsertarActualizarMaterialResponse response = new InsertarActualizarMaterialResponse();
-		Confirmacion confirmacion = materialMapper.updateMaterial(request.getMaterial().getIdMaterial(), request.getMaterial().getStockMaximo(), request.getMaterial().getStockMinimo(), request.getMaterial().getPuntoPedido(), 
-				request.getMaterial().getPrecioVenta(), request.getMaterial().getNombre(), request.getMaterial().getMarca(), request.getMaterial().getStock(), request.getMaterial().getPrecioCompra(), request.getMaterial().getDescripcion(), request.getMaterial().getIdProveedor());
+		Confirmacion confirmacion = materialMapper.updateMaterial(request.getMaterial().getIdMaterial(),request.getMaterial().getCodigo(), request.getMaterial().getStockMaximo(), request.getMaterial().getStockMinimo(), request.getMaterial().getPuntoPedido(), 
+				 request.getMaterial().getNombre(), request.getMaterial().getMarca(), request.getMaterial().getStock(), request.getMaterial().getDescripcion());
+
 		response.setConfirmacion(confirmacion);
 		return response;
 	}
@@ -69,7 +70,7 @@ public class MaterialDAOImpl implements MaterialDAO{
 			throws Exception {
 		ListarProveedorResponse response = new ListarProveedorResponse();
 		List<Proveedor> proveedores=materialMapper.comboProveedor();
-		response.setProveedor(proveedores);
+		response.setProveedorList(proveedores);
 		return response;
 	}
 
@@ -78,9 +79,18 @@ public class MaterialDAOImpl implements MaterialDAO{
 			InsertarActualizarMaterialRequest request) throws Exception {
 		InsertarActualizarMaterialResponse response = new InsertarActualizarMaterialResponse();
 		Confirmacion confirmacion = materialMapper.insertMaterial(request.getMaterial().getCodigo(), request.getMaterial().getStockMaximo(), request.getMaterial().getStockMinimo(), request.getMaterial().getPuntoPedido(), 
-				request.getMaterial().getPrecioVenta(), request.getMaterial().getNombre(), request.getMaterial().getMarca(), request.getMaterial().getStock(), request.getMaterial().getPrecioCompra(), request.getMaterial().getDescripcion(), request.getMaterial().getIdProveedor());
+				 request.getMaterial().getNombre(), request.getMaterial().getMarca(), request.getMaterial().getStock(), request.getMaterial().getDescripcion());
+
 		response.setConfirmacion(confirmacion);
 		return response;
 	}
 
+	@Override
+	public ListarMaterialResponse listarMaterialesAlerta(
+			ListarMaterialRequest request) throws Exception {
+		ListarMaterialResponse response = new ListarMaterialResponse();
+		List<Material>listaMateriales=materialMapper.listarMaterialesAlerta(request.getNombre(), request.getEstado(), request.getNuPagina(), request.getNuRegisMostrar());
+		response.setMateriales(listaMateriales);
+		return response;
+	}
 }

@@ -12,11 +12,11 @@ import pe.com.tintegro.sigs.dto.response.ListarMaquinariaResponse;
 import pe.com.tintegro.sigs.service.MaquinariaService;
 
 @Service("maquinariaService")
-public class MaquinariaServiceImpl implements MaquinariaService{
-
+public class MaquinariaServiceImpl implements MaquinariaService {
 
 	@Autowired
 	MaquinariaDAO maquinariaDAO;
+
 	@Override
 	public InsertarActualizarMaquinariaResponse desactivarMaquinaria(
 			EliminarMaquinariaRequest request) throws Exception {

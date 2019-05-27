@@ -16,13 +16,14 @@ public class Maquinaria implements Serializable{
 	private Integer idMaquinaria;
 	private String nombre ;
 	private String marca ;
-	private Integer cantidad ;
+	private String codigo ;
 	private String  fechaRegistro;
 	private String fechaMantenimiento;
 	private String detalle ;
 	private Integer estado;
 	private Integer nuTotalReg;
-
+	private String  ubicacion;
+	
 	  public Integer getIdMaquinaria() {
 		return idMaquinaria;
 	}
@@ -41,11 +42,11 @@ public class Maquinaria implements Serializable{
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public Integer getCantidad() {
-		return cantidad;
+	public String getCodigo() {
+		return codigo;
 	}
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public String getFechaRegistro() {
 		return fechaRegistro;
@@ -77,5 +78,13 @@ public class Maquinaria implements Serializable{
 	public void setNuTotalReg(Integer nuTotalReg) {
 		this.nuTotalReg = nuTotalReg;
 	}
+
+	public String getUbicacion() {
+		return ubicacion;
+	}
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
 
 }

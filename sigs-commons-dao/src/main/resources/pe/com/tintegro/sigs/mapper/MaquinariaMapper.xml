@@ -12,10 +12,12 @@
 		<result property="idMaquinaria" column="id_maquinaria" />
 		<result property="nombre" column="nombre" />
 		<result property="marca" column="marca" />
-		<result property="cantidad" column="cantidad" />
+		<result property="codigo" column="codigo" />
 		<result property="fechaRegistro" column="fecha_compra" />
 		<result property="fechaMantenimiento" column="fecha_mantenimiento" />
 		<result property="detalle" column="detalle" />
+		<result property="ubicacion" column="ubicacion" />
+		<result property="cantidad" column="cantidad" />
 		<result property="nuTotalReg" column="nu_total_reg" />
 
 	</resultMap>
@@ -35,6 +37,7 @@
 		logistica.fn_lo_insert_maquinaria(
 		#{nombre},
 		#{marca},
+		#{codigo},
 		#{cantidad},
 		#{fechaMantenimiento},
 		#{detalle})
@@ -44,6 +47,9 @@
 		select * from
 		logistica.fn_lo_update_maquinaria(
 		#{idMaquinaria},
+		#{nombre},
+		#{marca},
+		#{codigo},
 		#{cantidad},
 		#{fechaMantenimiento},
 		#{detalle})

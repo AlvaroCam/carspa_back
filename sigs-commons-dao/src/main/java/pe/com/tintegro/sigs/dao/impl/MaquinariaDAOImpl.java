@@ -40,16 +40,21 @@ public class MaquinariaDAOImpl implements MaquinariaDAO {
 	@Override
 	public InsertarActualizarMaquinariaResponse insertMaquinaria(InsertarActualizarMaquinariaRequest request) throws Exception {
 		InsertarActualizarMaquinariaResponse response = new InsertarActualizarMaquinariaResponse();
-		Confirmacion confirmacion = maquinariaMapper.insertMaquinaria(request.getMaquinaria().getNombre(), request.getMaquinaria().getMarca(), 
-				request.getMaquinaria().getCantidad(),request.getMaquinaria().getFechaMantenimiento(),request.getMaquinaria().getDetalle());
+		Confirmacion confirmacion = maquinariaMapper.insertMaquinaria(request.getMaquinaria().getNombre(), 
+				request.getMaquinaria().getMarca(), 
+				request.getMaquinaria().getCodigo(),
+				request.getMaquinaria().getFechaMantenimiento(),
+				request.getMaquinaria().getDetalle());
+
 		response.setConfirmacion(confirmacion);
 		return response;
 	}
 	@Override
 	public InsertarActualizarMaquinariaResponse updateMaquinaria(InsertarActualizarMaquinariaRequest request) throws Exception {
 		InsertarActualizarMaquinariaResponse response = new InsertarActualizarMaquinariaResponse();
-		Confirmacion confirmacion = maquinariaMapper.updateMaquinaria(request.getMaquinaria().getIdMaquinaria(), request.getMaquinaria().getCantidad(), 
-				request.getMaquinaria().getFechaMantenimiento(), request.getMaquinaria().getDetalle());
+		Confirmacion confirmacion = maquinariaMapper.updateMaquinaria(request.getMaquinaria().getIdMaquinaria(),request.getMaquinaria().getNombre(), request.getMaquinaria().getMarca(), 
+				request.getMaquinaria().getCodigo(),request.getMaquinaria().getFechaMantenimiento(),request.getMaquinaria().getDetalle());
+
 		response.setConfirmacion(confirmacion);
 		return response;
 	}

@@ -22,6 +22,7 @@ public class MaterialServiceImpl implements MaterialService{
 	@Override
 	public InsertarActualizarMaterialResponse activarMaterial(
 			EliminarMaterialRequest request) throws Exception {
+
 		// TODO Auto-generated method stub
 		return materialDAO.activarMaterial(request);
 	}
@@ -57,8 +58,16 @@ public class MaterialServiceImpl implements MaterialService{
 	@Override
 	public ListarProveedorResponse comboProveedor(ListarProveedorRequest request)
 			throws Exception {
-		// TODO Auto-generated method stub
+		
 		return materialDAO.comboProveedor(request);
 	}
+
+	@Override
+	public ListarMaterialResponse listarMaterialesAlerta(
+			ListarMaterialRequest request) throws Exception {
+		
+		return materialDAO.listarMaterialesAlerta(request);
+	}
+
 
 }

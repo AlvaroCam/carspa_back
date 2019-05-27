@@ -27,6 +27,7 @@ public class Material implements Serializable {
 	private String descripcion;
 	private Integer idProveedor;
 	private String nombreProveedor;
+	private String alerta;
 	private Integer nuTotalReg;
 
 	public String getNombre() {
@@ -163,6 +164,14 @@ public class Material implements Serializable {
 
 	public void setNuTotalReg(Integer nuTotalReg) {
 		this.nuTotalReg = nuTotalReg;
+	}
+
+	public String getAlerta() {
+		return alerta;
+	}
+
+	public void setAlerta(String alerta) {
+		this.alerta = alerta;
 	}
 
 }
