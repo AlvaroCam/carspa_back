@@ -36,8 +36,7 @@ public class AlmacenOrdenCompraController {
 	@Autowired
 	private AlmacenOrdenCompraService almacenOrdenCompraService;
 
-	private static final Logger LOG = Logger
-			.getLogger(AlmacenOrdenCompraController.class);
+	private static final Logger LOG = Logger.getLogger(AlmacenOrdenCompraController.class);
 
 	@Autowired
 	private HttpServletRequest servletRequest;
@@ -48,9 +47,8 @@ public class AlmacenOrdenCompraController {
 	@RequestMapping(value = "/listarAlmacenOrdenCompra", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ApiOperation(value = "obtiene almacen", notes = "obtiene almacen", response = ListarAlmacenOrdenCompraResponse.class)
-	public ListarAlmacenOrdenCompraResponse obtenerActoMedicoPorCita(
-			@RequestParam Integer idAlmacenOrdenCompra,@RequestParam String estado,@RequestParam Integer nuPagina,
-			@RequestParam Integer nuRegisMostrar) {
+	public ListarAlmacenOrdenCompraResponse obtenerActoMedicoPorCita(Integer idAlmacenOrdenCompra, String estado,
+			Integer nuPagina, Integer nuRegisMostrar) {
 		ListarAlmacenOrdenCompraResponse response = new ListarAlmacenOrdenCompraResponse();
 		ListarAlmacenOrdenCompraRequest request = new ListarAlmacenOrdenCompraRequest();
 		request.setIdAlmacenOrdenCompra(idAlmacenOrdenCompra);
@@ -58,11 +56,9 @@ public class AlmacenOrdenCompraController {
 		request.setNuPagina(nuPagina);
 		request.setNuRegisMostrar(nuRegisMostrar);
 		try {
-			response = almacenOrdenCompraService
-					.listarAlmacenOrdenCompra(request);
+			response = almacenOrdenCompraService.listarAlmacenOrdenCompra(request);
 		} catch (Exception e) {
-			String codigoError = ResponseHelper
-					.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
+			String codigoError = ResponseHelper.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
 			response.setEstado(ResponseEstado.ERROR_APLICACION);
 			response.setMensaje("Ocurrió un error al obtener las Ordenes de Compra");
 			response.setCodigoError(codigoError);
@@ -80,11 +76,9 @@ public class AlmacenOrdenCompraController {
 		ListarAlmacenOrdenCompraMaterialRequest request = new ListarAlmacenOrdenCompraMaterialRequest();
 		request.setIdAlmacenOrdenCompra(idAlmacenOrdenCompra);
 		try {
-			response = almacenOrdenCompraService
-					.listarAlmacenOrdenCompraMaterial(request);
+			response = almacenOrdenCompraService.listarAlmacenOrdenCompraMaterial(request);
 		} catch (Exception e) {
-			String codigoError = ResponseHelper
-					.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
+			String codigoError = ResponseHelper.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
 			response.setEstado(ResponseEstado.ERROR_APLICACION);
 			response.setMensaje("Ocurrió un error al obtener los Materiales");
 			response.setCodigoError(codigoError);
@@ -103,8 +97,7 @@ public class AlmacenOrdenCompraController {
 		try {
 			response = almacenOrdenCompraService.actualizarEstado(request);
 		} catch (Exception e) {
-			String codigoError = ResponseHelper
-					.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
+			String codigoError = ResponseHelper.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
 
 			response.setEstado(ResponseEstado.ERROR_APLICACION);
 			response.setMensaje("Error al actualizar el estado");
@@ -118,16 +111,13 @@ public class AlmacenOrdenCompraController {
 	@RequestMapping(value = "/actualizarCantidadFisica", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ApiOperation(value = "Actualizar", notes = "Actualizar", response = ActualizarCantidadFisicaResponse.class)
-	public ActualizarCantidadFisicaResponse actualizarEstado(
-			@RequestBody ActualizarCantidadFisicaRequest request) {
+	public ActualizarCantidadFisicaResponse actualizarEstado(@RequestBody ActualizarCantidadFisicaRequest request) {
 		ActualizarCantidadFisicaResponse response = new ActualizarCantidadFisicaResponse();
 
 		try {
-			response = almacenOrdenCompraService
-					.actualizarCantidadFisica(request);
+			response = almacenOrdenCompraService.actualizarCantidadFisica(request);
 		} catch (Exception e) {
-			String codigoError = ResponseHelper
-					.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
+			String codigoError = ResponseHelper.obtenerCodigoErrorPorFecha(apiProperties.getNombre());
 			response.setEstado(ResponseEstado.ERROR_APLICACION);
 			response.setMensaje("Error al actualizar cantidad física");
 			response.setCodigoError(codigoError);

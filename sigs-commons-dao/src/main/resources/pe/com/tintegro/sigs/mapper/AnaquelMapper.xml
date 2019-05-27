@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pe.com.tintegro.sigs.mapper.AnaquelMapper">
+
+	<resultMap id="confirmacionResultMap"
+		type="pe.com.tintegro.sigs.entidad.general.Confirmacion">
+		<result property="id" column="id" />
+		<result property="mensaje" column="no_respuesta" />
+	</resultMap>
+
+
+	<select id="actualizarAnaquel" resultMap="confirmacionResultMap">
+		select * from
+		logistica.fn_lo_update_anaquel_material(#{idAlmacenOrdenCompraMaterial},#{idAnaquel})
+	</select>
+
+</mapper>
